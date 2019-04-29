@@ -2,13 +2,32 @@
 
 apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
 Kota=Semarang #A city name. Example: London
-Negara=Indonesia #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
+Negara=ID #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
 
-##API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
-rm -f "${apiconfig}"
+#set initial value for first time user
+if [ ! -f "${apiconfig}" ]; then
+	echo 276 > "${apiconfig}"
+	echo 353 >> "${apiconfig}"
+	echo 424 >> "${apiconfig}"
+	echo 495 >> "${apiconfig}"
+	echo 566 >> "${apiconfig}"
+	echo 637 >> "${apiconfig}"
+	echo 710 >> "${apiconfig}"
+	echo 750 >> "${apiconfig}"
+	echo 790 >> "${apiconfig}"
+	echo 830 >> "${apiconfig}"
+	echo 870 >> "${apiconfig}"
+	echo 912 >> "${apiconfig}"
+	echo 1067 >> "${apiconfig}"
+	echo 1157 >> "${apiconfig}"
+	echo 1430 >> "${apiconfig}"
+	echo 266 >> "${apiconfig}"
+fi
+
+#API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
 if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=Semarang&country=ID&method=8" | jq --raw-output '.status')" == "OK" ]; then
 	#get time from API	
-	mapfile -t apiseed < <(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.data.timings.Fajr, .data.timings.Sunrise, .data.timings.Dhuhr, .data.timings.Asr, .data.timings.Maghrib, .data.timings.Isha, .data.timings.Imsak, .data.timings.Midnight')
+	mapfile -t apiseed < <(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.data.timings.Fajr, .data.timings.Sunrise, .data.timings.Dhuhr, .data.timings.Asr, .data.timings.Maghrib, .data.timings.Isha, .data.timings.Midnight, .data.timings.Imsak')
 	#API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
 
 	#set time according to API
@@ -28,8 +47,8 @@ if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=Semarang&country=I
 	apitime[11]=$(( $(($(echo "${apiseed[3]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[3]}" | cut -d':' -f 2) ))
 	apitime[12]=$(( $(($(echo "${apiseed[4]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[4]}" | cut -d':' -f 2) ))
 	apitime[13]=$(( $(($(echo "${apiseed[5]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[5]}" | cut -d':' -f 2) ))
-	apitime[14]=$(( $(($(echo "${apiseed[7]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[7]}" | cut -d':' -f 2) ))
-	apitime[15]=$(( $(($(echo "${apiseed[6]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[6]}" | cut -d':' -f 2) ))
+	apitime[14]=$(( $(($(echo "${apiseed[6]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[6]}" | cut -d':' -f 2) ))
+	apitime[15]=$(( $(($(echo "${apiseed[7]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[7]}" | cut -d':' -f 2) ))
 
 	for index in ${!apitime[@]}; do
 		if [ "${index}" == "0" ]; then
@@ -39,6 +58,9 @@ if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=Semarang&country=I
 		fi
 	done
 	echo "Get new data from API"
+	for index in ${!apiseed[@]}; do
+		echo ${apiseed[$index]}
+	done
 else
 	echo "Cannot get data from API, are you online?"
 fi
