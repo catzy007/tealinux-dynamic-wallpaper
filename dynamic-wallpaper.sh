@@ -30,7 +30,7 @@ while true ; do
 	#get current time
 	hour=$(date +"%H")
 	mint=$(date +"%M")
-	time=$(( ${hour}*60 + ${mint} ))
+	time=$(( 10#${hour}*60 + 10#${mint} ))
 
 	#set wallpaper according to time
 	readarray -t varcfg < ${config}
