@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Dynamic Wallpaper
+Comment=Dynamic wallpaper for XFCE4
+Exec=/home/catzy/xfce4-dynamic-wallpaper/dynamic-wallpaper.sh #you might need to change this
+Icon=unknown
+Path=/home/catzy/xfce4-dynamic-wallpaper #you might need to change this
+Terminal=false
+StartupNotify=false

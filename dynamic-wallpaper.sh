@@ -1,8 +1,8 @@
 #!/bin/bash
 #some variables
 time=0
-wppath=$(pwd)/mojave
-apipath=$(pwd)
+wppath=/home/catzy/xfce4-dynamic-wallpaper/mojave #you might need to change this
+apipath=/home/catzy/xfce4-dynamic-wallpaper/ #you might need to change this
 apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
 config=~/.config/tea-dynamic-wallpaper.cfg
 declare -a timeseed
@@ -50,7 +50,7 @@ while true ; do
 					break
 				fi			
 			done
-			#echo "${default}" #debug_line_can_be_removed!
+			echo "${default}"
 			for index2 in ${!cfgxml[@]}; do
 				xfconf-query -c xfce4-desktop -p "${cfgxml[$index2]}" -s "${default}"
 			done
