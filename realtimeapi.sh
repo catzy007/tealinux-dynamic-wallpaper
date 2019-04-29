@@ -58,9 +58,8 @@ if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=Semarang&country=I
 		fi
 	done
 	echo "Get new data from API"
-	for index in ${!apiseed[@]}; do
-		echo ${apiseed[$index]}
-	done
+	#for index in ${!apiseed[@]}; do echo ${apiseed[$index]}; done #debug_line_can_be_removed!
+	#for index in ${!apitime[@]}; do echo ${apitime[$index]}; done #debug_line_can_be_removed!
 else
 	echo "Cannot get data from API, are you online?"
 fi

@@ -50,13 +50,13 @@ while true ; do
 					break
 				fi			
 			done
-			echo "${default}" #debug_line_can_be_removed!
+			#echo "${default}" #debug_line_can_be_removed!
 			for index2 in ${!cfgxml[@]}; do
 				xfconf-query -c xfce4-desktop -p "${cfgxml[$index2]}" -s "${default}"
 			done
 		fi
 	fi
 
-	echo "${timeseed[0]} | ${time} | ${varcfg[0]} | ${timeseed[14]} | ${default}" #debug_line_can_be_removed!
+	#echo "${timeseed[0]} | ${time} | ${varcfg[0]} | ${timeseed[14]} | ${default}" #debug_line_can_be_removed!
 	sleep 10
 done
