@@ -1,35 +1,44 @@
 #!/bin/bash
-##API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
-Kota=Jakarta #A city name. Example: London
+
+apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
+Kota=Semarang #A city name. Example: London
 Negara=Indonesia #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
-declare -a timeseed
 
-mapfile -t timeapi < <(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.data.timings.Fajr, .data.timings.Sunrise, .data.timings.Dhuhr, .data.timings.Asr, .data.timings.Maghrib, .data.timings.Isha, .data.timings.Imsak, .data.timings.Midnight')
-for index in ${!timeapi[@]}; do
-	echo ${index} ${timeapi[$index]}
-done
+##API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
+rm -f "${apiconfig}"
+if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=Semarang&country=ID&method=8" | jq --raw-output '.status')" == "OK" ]; then
+	#get time from API	
+	mapfile -t apiseed < <(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.data.timings.Fajr, .data.timings.Sunrise, .data.timings.Dhuhr, .data.timings.Asr, .data.timings.Maghrib, .data.timings.Isha, .data.timings.Imsak, .data.timings.Midnight')
+	#API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
 
-seed1=$(( $(( $(( $(($(echo "${timeapi[2]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[2]}" | cut -d':' -f 2) )) - $(( $(($(echo "${timeapi[1]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[1]}" | cut -d':' -f 2) )) )) / 5 ))
-seed2=$(( $(( $(( $(($(echo "${timeapi[3]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[3]}" | cut -d':' -f 2) )) - $(( $(($(echo "${timeapi[2]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[2]}" | cut -d':' -f 2) )) )) / 5 ))
-timeseed[0]=$(( $(($(echo "${timeapi[0]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[0]}" | cut -d':' -f 2) ))
-timeseed[1]=$(( $(($(echo "${timeapi[1]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[1]}" | cut -d':' -f 2) ))
-timeseed[2]=$(( ${timeseed[1]} + seed1 ))
-timeseed[3]=$(( ${timeseed[2]} + seed1 ))
-timeseed[4]=$(( ${timeseed[3]} + seed1 ))
-timeseed[5]=$(( ${timeseed[4]} + seed1 ))
-timeseed[6]=$(( $(($(echo "${timeapi[2]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[2]}" | cut -d':' -f 2) ))
-timeseed[7]=$(( ${timeseed[6]} + seed2 ))
-timeseed[8]=$(( ${timeseed[7]} + seed2 ))
-timeseed[9]=$(( ${timeseed[8]} + seed2 ))
-timeseed[10]=$(( ${timeseed[9]} + seed2 ))
-timeseed[11]=$(( $(($(echo "${timeapi[3]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[3]}" | cut -d':' -f 2) ))
-timeseed[12]=$(( $(($(echo "${timeapi[4]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[4]}" | cut -d':' -f 2) ))
-timeseed[13]=$(( $(($(echo "${timeapi[5]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[5]}" | cut -d':' -f 2) ))
-timeseed[14]=$(( $(($(echo "${timeapi[7]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[7]}" | cut -d':' -f 2) ))
-timeseed[15]=$(( $(($(echo "${timeapi[6]}" | cut -d':' -f 1)*60)) + $(echo "${timeapi[6]}" | cut -d':' -f 2) ))
+	#set time according to API
+	seed1=$(( $(( $(( $(($(echo "${apiseed[2]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[2]}" | cut -d':' -f 2) )) - $(( $(($(echo "${apiseed[1]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[1]}" | cut -d':' -f 2) )) )) / 5 ))
+	seed2=$(( $(( $(( $(($(echo "${apiseed[3]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[3]}" | cut -d':' -f 2) )) - $(( $(($(echo "${apiseed[2]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[2]}" | cut -d':' -f 2) )) )) / 5 ))
+	apitime[0]=$(( $(($(echo "${apiseed[0]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[0]}" | cut -d':' -f 2) ))
+	apitime[1]=$(( $(($(echo "${apiseed[1]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[1]}" | cut -d':' -f 2) ))
+	apitime[2]=$(( ${apitime[1]} + seed1 ))
+	apitime[3]=$(( ${apitime[2]} + seed1 ))
+	apitime[4]=$(( ${apitime[3]} + seed1 ))
+	apitime[5]=$(( ${apitime[4]} + seed1 ))
+	apitime[6]=$(( $(($(echo "${apiseed[2]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[2]}" | cut -d':' -f 2) ))
+	apitime[7]=$(( ${apitime[6]} + seed2 ))
+	apitime[8]=$(( ${apitime[7]} + seed2 ))
+	apitime[9]=$(( ${apitime[8]} + seed2 ))
+	apitime[10]=$(( ${apitime[9]} + seed2 ))
+	apitime[11]=$(( $(($(echo "${apiseed[3]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[3]}" | cut -d':' -f 2) ))
+	apitime[12]=$(( $(($(echo "${apiseed[4]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[4]}" | cut -d':' -f 2) ))
+	apitime[13]=$(( $(($(echo "${apiseed[5]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[5]}" | cut -d':' -f 2) ))
+	apitime[14]=$(( $(($(echo "${apiseed[7]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[7]}" | cut -d':' -f 2) ))
+	apitime[15]=$(( $(($(echo "${apiseed[6]}" | cut -d':' -f 1)*60)) + $(echo "${apiseed[6]}" | cut -d':' -f 2) ))
 
-echo $seed1
-echo $seed2
-for index in ${!timeseed[@]}; do
-	echo ${index} ${timeseed[$index]}
-done
+	for index in ${!apitime[@]}; do
+		if [ "${index}" == "0" ]; then
+			echo ${apitime[$index]} > "${apiconfig}"
+		else
+			echo ${apitime[$index]} >> "${apiconfig}"
+		fi
+	done
+	echo "Get new data from API"
+else
+	echo "Cannot get data from API, are you online?"
+fi
