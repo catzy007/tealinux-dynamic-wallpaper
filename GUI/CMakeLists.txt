@@ -1,5 +1,5 @@
 # Set the name and the supported language of the project
-PROJECT(hello-world C)
+PROJECT(dynamic-wallpaper-enabler C)
 # Set the minimum version of cmake required to build this project
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
