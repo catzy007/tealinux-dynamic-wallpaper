@@ -9,6 +9,7 @@
     <property name="window_position">center</property>
     <property name="default_width">300</property>
     <property name="default_height">200</property>
+    <property name="icon_name">applications-development</property>
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <placeholder/>
