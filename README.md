@@ -30,7 +30,7 @@ set city by `A city name. Example: London` and country `A country name or 2 char
 # Using MacOS dynamic wallpaper
 * Download MacOS dynamic wallpaper `example.heic` file 
 * Install [libheif](https://github.com/strukturag/libheif) `sudo apt install libheif-examples`
-* Check if valid `heif-info example.heic`
+* Check if valid `heif-info example.heic` and make sure it contain 16 images!
 * Convert to jpg `heif-convert example.heic example.jpg`
 * Set `wppath=` at `dynamic-wallpaper.sh`
 
