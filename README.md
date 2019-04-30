@@ -6,6 +6,7 @@ that used to sync corresponding sun and moon time to image.
 # dependency
 * curl `sudo apt install curl`
 * jq `sudo apt install jq`
+* libgtk3 `sudo apt install libgtk-3-dev`
 
 # installation
 * clone this repo or download
