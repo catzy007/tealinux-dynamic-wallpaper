@@ -8,16 +8,34 @@ fi
 
 mkdir "${installpath}"
 mkdir "${installpath}/dynamic-wallpaper"
+
 echo "copying $(pwd)/dynamic-wallpaper.sh"
 cp "$(pwd)/dynamic-wallpaper.sh" "${installpath}/dynamic-wallpaper"
+
 echo "copying $(pwd)/realtimeapi.sh"
 cp "$(pwd)/realtimeapi.sh" "${installpath}/dynamic-wallpaper"
+
 echo "copying $(pwd)/LICENSE"
 cp "$(pwd)/LICENSE" "${installpath}/dynamic-wallpaper"
+
 echo "copying $(pwd)/mojave"
 cp -r "$(pwd)/mojave" "${installpath}/dynamic-wallpaper"
+
+echo "copying $(pwd)/tealinux-dynamic-wallpaper.png"
+cp "$(pwd)/ico/tealinux-dynamic-wallpaper.png" "/usr/share/pixmaps/"
+
 echo "copying $(pwd)/dynamic-wallpaper.desktop"
-cp "$(pwd)/dynamic-wallpaper.desktop" "/etc/xdg/autostart"
+cp "$(pwd)/dynamic-wallpaper.desktop" "/usr/share/applications"
+chmod +x "/usr/share/applications/dynamic-wallpaper.desktop"
+
+echo "copying $(pwd)/dynamic-wallpaper-startup.desktop"
+cp "$(pwd)/dynamic-wallpaper-startup.desktop" "/etc/xdg/autostart"
+chmod +x "/etc/xdg/autostart/dynamic-wallpaper-startup.desktop"
+
+echo "Installing GUI"
+cp -r "$(pwd)/GUI" "${installpath}/dynamic-wallpaper"
+cd "${installpath}/dynamic-wallpaper/GUI"
+make
 
 echo "done!"
 echo "reboot to apply effect!"
