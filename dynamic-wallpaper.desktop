@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=Dynamic Wallpaper
-Comment=Dynamic wallpaper for XFCE4
-Exec=/home/catzy/xfce4-dynamic-wallpaper/dynamic-wallpaper.sh #you might need to change this
+Comment=Dynamic wallpaper for tealinuxOS
+Exec=/usr/share/tealinux/xfce4-dynamic-wallpaper/dynamic-wallpaper.sh
 Icon=unknown
-Path=/home/catzy/xfce4-dynamic-wallpaper #you might need to change this
+Path=/usr/share/tealinux/xfce4-dynamic-wallpaper
 Terminal=false
 StartupNotify=false

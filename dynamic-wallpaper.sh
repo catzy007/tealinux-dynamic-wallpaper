@@ -1,8 +1,8 @@
 #!/bin/bash
 #some variables
 time=0
-wppath=/home/catzy/xfce4-dynamic-wallpaper/mojave #you might need to change this
-apipath=/home/catzy/xfce4-dynamic-wallpaper/ #you might need to change this
+wppath=/usr/share/tealinux/dynamic-wallpaper/mojave #you might need to change this
+apipath=/usr/share/tealinux/dynamic-wallpaper
 apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
 config=~/.config/tea-dynamic-wallpaper.cfg
 declare -a timeseed
