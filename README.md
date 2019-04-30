@@ -1,4 +1,4 @@
-## Dynamic-Wallpaper for TealinuxOS
+# Dynamic-Wallpaper for TealinuxOS
 Bash approach to dynamic wallpaper for tealinuxos and other XFCE4 based os like xubuntu.
 dynamic wallpaper can get data from [api](https://aladhan.com/prayer-times-api#GetTimingsByCity)
 that used to sync corresponding sun and moon time to image.
