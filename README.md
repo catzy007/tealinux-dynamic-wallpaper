@@ -12,8 +12,8 @@ that used to sync corresponding sun and moon time to image.
 summary `sudo apt update && sudo apt install curl jq libgtk-3-dev cmake`
 
 # Installation
-* clone this repo or download
-* using installer `sudo ./install.sh`
+* Clone this repo or download zip
+* Use default installer `sudo ./install.sh`
 
 # Configuration
 * You can change wallpaper by editing `dynamic-wallpaper.sh` wallpaper path at `wppath=`. 
