@@ -35,6 +35,7 @@ chmod +x "/etc/xdg/autostart/dynamic-wallpaper-startup.desktop"
 echo "Installing GUI"
 cp -r "$(pwd)/GUI" "${installpath}/dynamic-wallpaper"
 cd "${installpath}/dynamic-wallpaper/GUI"
+cmake .
 make
 
 echo "done!"
