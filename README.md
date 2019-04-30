@@ -27,6 +27,7 @@ set city by `A city name. Example: London` and country `A country name or 2 char
 * dynamic-wallpaper get time data from api, then time converted to minutes. this become (seed)
 * dynamic-wallpaper adjust image based on time data.
 * example :
+
 | SEED | START | STOP  | FILE | DESCR     |
 | ---: | :---: | :---: | ---- | --------- |
 | 262  | 04:12 | 04:22 | wp01 | Dawn      |
