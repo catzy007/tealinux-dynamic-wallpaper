@@ -20,3 +20,4 @@ echo "copying $(pwd)/dynamic-wallpaper.desktop"
 cp "$(pwd)/dynamic-wallpaper.desktop" "/etc/xdg/autostart"
 
 echo "done!"
+echo "reboot to apply effect!"
