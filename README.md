@@ -8,6 +8,8 @@ that used to sync corresponding sun and moon time to image.
 * jq `sudo apt install jq`
 
 # installation
+* clone this repo or download
+* using installer `sudo ./install.sh`
 
 # configuration
 * you can change wallpaper by editing `dynamic-wallpaper.sh` wallpaper path at `wppath=`. 
