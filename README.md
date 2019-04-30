@@ -1,4 +1,4 @@
-# dynamic-wallpaper for tealinuxOS
+# Dynamic-Wallpaper for tealinuxOS
 bash approach to dynamic wallpaper for tealinuxos and other XFCE4 based os like xubuntu.
 dynamic wallpaper can get data from [api](https://aladhan.com/prayer-times-api#GetTimingsByCity)
 that used to sync corresponding sun and moon time to image.
@@ -16,7 +16,7 @@ that used to sync corresponding sun and moon time to image.
 wallpaper is consist of 16 images that correspond to `dawn, sunrise, noon, sunset, dusk, nightfall, and midnight`.
 dynamic wallpaper supports `jpg, jpeg, png`
 * by default, dynamic wallpaper set location city to `Semarang` and county `ID` you can change it in `realtimeapi.sh` at `Kota=` and `Negara=`.
-set city by `A city name. Example: London` and country `A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom`
+set city by `A city name. Example: London` and country `A country name or 2 character alpha [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) code. Examples: GB or United Kindom`
 
 # using macOS dynamic wallpaper
 * download dynamic-wallpaper `example.heic` file 
