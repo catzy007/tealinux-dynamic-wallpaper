@@ -20,7 +20,7 @@ you might need to install basic compiler too `sudo apt install build-essential`
 
 ## Configuration
 * You can change wallpaper by editing `dynamic-wallpaper.sh` wallpaper path at `wppath=`
-* Wallpaper must consist of 16 images that correspond to `dawn, sunrise, noon, sunset, dusk, nightfall, and midnight`.
+* Wallpaper **MUST** consist of 16 images that correspond to `dawn, sunrise, noon, sunset, dusk, nightfall, and midnight`.
 dynamic-wallpaper supports `jpg, jpeg, png`
 * By default, dynamic-wallpaper set location city to `Semarang` and country `ID` you can change it in `realtimeapi.sh` at `Kota=` and `Negara=`
 * Set city by `A city name. Example: London` and country `A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom` check [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
