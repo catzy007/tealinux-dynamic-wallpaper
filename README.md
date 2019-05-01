@@ -3,7 +3,7 @@ Bash approach to dynamic wallpaper for tealinuxos and other XFCE4 based os like 
 dynamic-wallpaper can get data from [api](https://aladhan.com/prayer-times-api#GetTimingsByCity)
 that used to sync corresponding sun and moon time to image.
 
-# Dependency
+## Dependency
 * curl `sudo apt install curl`
 * jq `sudo apt install jq`
 * libgtk3 `sudo apt install libgtk-3-dev`
@@ -14,30 +14,30 @@ summary `sudo apt update && sudo apt install curl jq libgtk-3-dev pkg-config cma
 
 you might need to install basic compiler too `sudo apt install build-essential`
 
-# Installation
+## Installation
 * Clone this repo or download zip
 * Use default installer `sudo ./install.sh`
 
-# Configuration
-* You can change wallpaper by editing `dynamic-wallpaper.sh` wallpaper path at `wppath=`. 
-wallpaper is consist of 16 images that correspond to `dawn, sunrise, noon, sunset, dusk, nightfall, and midnight`.
-dynamic wallpaper supports `jpg, jpeg, png`
-* By default, dynamic wallpaper set location city to `Semarang` and county `ID` you can change it in `realtimeapi.sh` at `Kota=` and `Negara=`.
-set city by `A city name. Example: London` and country `A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom` check [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
+## Configuration
+* You can change wallpaper by editing `dynamic-wallpaper.sh` wallpaper path at `wppath=`
+* Wallpaper must consist of 16 images that correspond to `dawn, sunrise, noon, sunset, dusk, nightfall, and midnight`.
+dynamic-wallpaper supports `jpg, jpeg, png`
+* By default, dynamic-wallpaper set location city to `Semarang` and country `ID` you can change it in `realtimeapi.sh` at `Kota=` and `Negara=`
+* Set city by `A city name. Example: London` and country `A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom` check [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
 
-# Using dynamic-wallpaper
+## Using dynamic-wallpaper
 * After successful installation and reboot, dynamic-wallpaper will automatically enabled.
 * To disable or enable dynamic-wallpaper, go to menu, look for `Dynamic Wallpaper` and click the enable/disable button. the effect might take few seconds.
 * After disabling dynamic-wallpaper, nothing will happend. Change your wallpaper manually!
 
-# Using MacOS dynamic wallpaper
+## Using MacOS dynamic wallpaper
 * Download MacOS dynamic wallpaper `example.heic` file 
 * Install [libheif](https://github.com/strukturag/libheif) `sudo apt install libheif-examples`
 * Check if valid `heif-info example.heic` and make sure it contain 16 images!
 * Convert to jpg `heif-convert example.heic example.jpg`
 * Set `wppath=` at `dynamic-wallpaper.sh`
 
-# Working principle
+## Working principle
 * Dynamic-wallpaper get time data from api, then time converted to minutes. this become **seed**
 * Dynamic-wallpaper adjust image based on **seed**.
 * Example :
