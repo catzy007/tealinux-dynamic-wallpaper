@@ -4,6 +4,7 @@
 //if you want home, then remove `~` at begining of path
 //system will replace that with `/home/activeuser`
 char configfile[]="/.config/status-dynamic-wallpaper.cfg"; //change this line
+char dynWpBash[]="/bin/bash /usr/share/tealinux/dynamic-wallpaper/dynamic-wallpaper.sh &";
 
 void getHome(char *input, char *output){
     char buffer[255];
@@ -37,7 +38,7 @@ GtkWidget *g_Button0;
 
 int main(int argc, char *argv[])
 {
-    GtkBuilder      *builder; 
+    GtkBuilder      *builder;
     GtkWidget       *window;
 
     gtk_init(&argc, &argv);
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "MainWIndow"));
     gtk_builder_connect_signals(builder, NULL);
-    
+
     //connect pointer to button0
     g_Button0 = GTK_WIDGET(gtk_builder_get_object(builder,"Button0"));
 
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
 
     g_object_unref(builder);
 
-    gtk_widget_show(window);                
+    gtk_widget_show(window);
     gtk_main();
 
     return 0;
@@ -89,6 +90,7 @@ void on_Button_clicked(){
         strcpy(commd,"echo 1 > ");
         strcat(commd,pathfile);
         system(commd);
+	    system(dynWpBash);
     }
     printf("%s\n",commd);
 }
