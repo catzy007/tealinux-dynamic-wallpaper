@@ -26,7 +26,7 @@ dynamic-wallpaper supports `jpg, jpeg, png`
 * Set city by `A city name. Example: London` and country `A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom` check [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
 
 ## Using dynamic-wallpaper
-* After successful installation and reboot, you can enable dynamic wallpaper.
+* After successful installation and proper reboot, you need to enable dynamic-wallpaper.
 * Go to menu, look for `Dynamic Wallpaper` and click the enable button. the effect might take few seconds.
 * To disable dynamic-wallpaper, go to menu > Dynamic Wallpaper and click the disable button.
 * After disabling dynamic-wallpaper, nothing will happend. Change your wallpaper manually!
