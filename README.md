@@ -1,15 +1,18 @@
 # Dynamic-Wallpaper for TealinuxOS
 Bash approach to dynamic wallpaper for tealinuxos and other XFCE4 based os like xubuntu.
-dynamic wallpaper can get data from [api](https://aladhan.com/prayer-times-api#GetTimingsByCity)
+dynamic-wallpaper can get data from [api](https://aladhan.com/prayer-times-api#GetTimingsByCity)
 that used to sync corresponding sun and moon time to image.
 
 # Dependency
 * curl `sudo apt install curl`
 * jq `sudo apt install jq`
 * libgtk3 `sudo apt install libgtk-3-dev`
+* pkg-config `sudo apt install pkg-config`
 * cmake `sudo apt install cmake`
 
-summary `sudo apt update && sudo apt install curl jq libgtk-3-dev cmake`
+summary `sudo apt update && sudo apt install curl jq libgtk-3-dev pkg-config cmake`
+
+you might need to install basic compiler too `sudo apt install build-essential`
 
 # Installation
 * Clone this repo or download zip
