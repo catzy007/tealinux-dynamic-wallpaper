@@ -36,7 +36,7 @@ dynamic-wallpaper supports `jpg, jpeg, png`
 * Install [libheif](https://github.com/strukturag/libheif) `sudo apt install libheif-examples`
 * Check if valid `heif-info example.heic` and make sure it contain 16 images!
 * Convert to jpg `heif-convert example.heic example.jpg`
-* Set `wppath=` at `dynamic-wallpaper.sh`
+* Set your wallpaper path to `wppath=` at `dynamic-wallpaper.sh`
 
 ## Working principle
 * Dynamic-wallpaper get time data from api, then time converted to minutes. this become **seed**
@@ -54,7 +54,7 @@ dynamic-wallpaper supports `jpg, jpeg, png`
 | 696  | 10:23 | 11:36 | wp06 |           |
 | 736  | 11:36 | 12:16 | wp07 | Noon      |
 | 776  | 12:16 | 12:56 | wp08 |           |
-| 816  | 12:56 | 13:36 | wp-9 |           |
+| 816  | 12:56 | 13:36 | wp09 |           |
 | 856  | 13:36 | 14:16 | wp10 |           |
 | 897  | 14:16 | 14:57 | wp11 |           |
 | 1052 | 14:57 | 17:32 | wp12 | Sunset    |
