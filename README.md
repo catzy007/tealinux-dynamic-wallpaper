@@ -26,8 +26,9 @@ dynamic-wallpaper supports `jpg, jpeg, png`
 * Set city by `A city name. Example: London` and country `A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom` check [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
 
 ## Using dynamic-wallpaper
-* After successful installation and reboot, dynamic-wallpaper will automatically enabled.
-* To disable or enable dynamic-wallpaper, go to menu, look for `Dynamic Wallpaper` and click the enable/disable button. the effect might take few seconds.
+* After successful installation and reboot, you can enable dynamic wallpaper.
+* Go to menu, look for `Dynamic Wallpaper` and click the enable button. the effect might take few seconds.
+* To disable dynamic-wallpaper, go to menu > Dynamic Wallpaper and click the disable button.
 * After disabling dynamic-wallpaper, nothing will happend. Change your wallpaper manually!
 
 ## Using MacOS dynamic wallpaper
