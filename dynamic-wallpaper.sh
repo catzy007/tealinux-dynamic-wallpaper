@@ -10,6 +10,12 @@ declare -a timeseed
 mapfile -t images < <(ls ${wppath} -v | grep -e jpg -e jpeg -e png)
 mapfile -t cfgxml < <(xfconf-query -c xfce4-desktop -l | grep "last-image$")
 
+#check if similar process is running
+if pidof -x "dynamic-wallpaper.sh" >/dev/null; then
+    echo "Process already running!"
+	exit
+fi
+
 #get time from API
 echo "$(${apipath}/realtimeapi.sh)"
 
