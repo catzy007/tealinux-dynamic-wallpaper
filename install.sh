@@ -13,6 +13,10 @@ echo "copying $(pwd)/dynamic-wallpaper.sh"
 cp "$(pwd)/dynamic-wallpaper.sh" "${installpath}/dynamic-wallpaper"
 chmod +x "${installpath}/dynamic-wallpaper/dynamic-wallpaper.sh"
 
+echo "copying $(pwd)/dynamic-wallpaper-startup.sh"
+cp "$(pwd)/dynamic-wallpaper-startup.sh" "${installpath}/dynamic-wallpaper"
+chmod +x "${installpath}/dynamic-wallpaper/dynamic-wallpaper-startup.sh"
+
 echo "copying $(pwd)/realtimeapi.sh"
 cp "$(pwd)/realtimeapi.sh" "${installpath}/dynamic-wallpaper"
 chmod +x "${installpath}/dynamic-wallpaper/realtimeapi.sh"

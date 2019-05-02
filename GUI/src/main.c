@@ -5,6 +5,7 @@
 //system will replace that with `/home/activeuser`
 char configfile[]="/.config/status-dynamic-wallpaper.cfg"; //change this line
 char dynWpBash[]="/bin/bash /usr/share/tealinux/dynamic-wallpaper/dynamic-wallpaper.sh &";
+char killCommand[]="pkill -u $(whoami) -f /usr/share/tealinux/dynamic-wallpaper/dynamic-wallpaper.sh";
 
 void getHome(char *input, char *output){
     char buffer[255];
@@ -82,6 +83,7 @@ void on_Button_clicked(){
 
     if(getDynWpStatus(pathfile)==1){
         gtk_button_set_label(GTK_BUTTON(g_Button0),"Enable");
+        system(killCommand);
         strcpy(commd,"echo 0 > ");
         strcat(commd,pathfile);
         system(commd);
@@ -90,7 +92,7 @@ void on_Button_clicked(){
         strcpy(commd,"echo 1 > ");
         strcat(commd,pathfile);
         system(commd);
-	    system(dynWpBash);
+        system(dynWpBash);
     }
     printf("%s\n",commd);
 }

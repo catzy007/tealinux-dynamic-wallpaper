@@ -10,13 +10,6 @@ declare -a timeseed
 mapfile -t images < <(ls ${wppath} -v | grep -e jpg -e jpeg -e png)
 mapfile -t cfgxml < <(xfconf-query -c xfce4-desktop -l | grep "last-image$")
 
-#check if similar process is running
-if ps ax | grep $0 | grep -v $$ | grep bash | grep -v grep
-then
-    echo "Another process is already running."
-    exit 1
-fi
-
 #get time from API
 echo "$(${apipath}/realtimeapi.sh)"
 
