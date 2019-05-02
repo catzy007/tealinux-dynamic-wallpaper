@@ -1,8 +1,7 @@
 #!/bin/bash
 
 apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
-Kota=Semarang #A city name. Example: London
-Negara=ID #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
+locationconfig=~/.config/location-dynamic-wallpaper.cfg
 
 #set initial value for first time user
 if [ ! -f "${apiconfig}" ]; then
@@ -24,8 +23,25 @@ if [ ! -f "${apiconfig}" ]; then
 	echo 266 >> "${apiconfig}"
 fi
 
+#get location config from file
+if [ ! -f "${status}" ]; then
+	readarray -t location < ${locationconfig}
+	if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${location[0]}&country=${location[1]}&method=8" | jq --raw-output '.status')" == "OK" ]; then
+		Kota=${location[0]}
+		Negara=${location[1]}
+	else
+		Kota=Semarang #A city name. Example: London
+		Negara=ID #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
+	fi
+else
+	Kota=Semarang #A city name. Example: London
+	Negara=ID #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
+fi
+
+echo "${Kota} ${Negara}"
+
 #API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
-if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=Semarang&country=ID&method=8" | jq --raw-output '.status')" == "OK" ]; then
+if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.status')" == "OK" ]; then
 	#get time from API	
 	mapfile -t apiseed < <(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.data.timings.Fajr, .data.timings.Sunrise, .data.timings.Dhuhr, .data.timings.Asr, .data.timings.Maghrib, .data.timings.Isha, .data.timings.Midnight, .data.timings.Imsak')
 	#API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
