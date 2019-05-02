@@ -51,7 +51,7 @@ fi
 
 #API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
 if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.status')" == "OK" ]; then
-	#get time from API	
+	#get time from API
 	mapfile -t apiseed < <(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.data.timings.Fajr, .data.timings.Sunrise, .data.timings.Dhuhr, .data.timings.Asr, .data.timings.Maghrib, .data.timings.Isha, .data.timings.Midnight, .data.timings.Imsak')
 	#API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
 
