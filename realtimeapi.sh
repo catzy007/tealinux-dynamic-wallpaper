@@ -2,6 +2,9 @@
 
 apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
 locationconfig=~/.config/location-dynamic-wallpaper.cfg
+activelocation=~/.config/active-dynamic-wallpaper.cfg
+Kota=Semarang
+Negara=ID
 
 #set initial value for first time user
 if [ ! -f "${apiconfig}" ]; then
@@ -22,23 +25,29 @@ if [ ! -f "${apiconfig}" ]; then
 	echo 1430 >> "${apiconfig}"
 	echo 266 >> "${apiconfig}"
 fi
+if [ ! -f "${activelocation}" ]; then
+	echo ${Kota} > "${locationconfig}"
+	echo ${Negara} >> "${locationconfig}"
+fi
 
 #get location config from file
-if [ ! -f "${status}" ]; then
+if [ ! -f "${locationconfig}" ]; then
+	echo "Configured location data not found! Continue using default config City=${Kota} Country=${Negara}"
+else
 	readarray -t location < ${locationconfig}
 	if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${location[0]}&country=${location[1]}&method=8" | jq --raw-output '.status')" == "OK" ]; then
 		Kota=${location[0]}
 		Negara=${location[1]}
+		echo ${Kota} > "${activelocation}"
+		echo ${Negara} >> "${activelocation}"
+		echo "Location data valid! Using current location data City=${Kota} Country=${Negara}"
 	else
-		Kota=Semarang #A city name. Example: London
-		Negara=ID #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
+		readarray -t location < ${activelocation}
+		Kota=${location[0]}
+		Negara=${location[1]}
+		echo "Configured location data invalid! Continue using previous configuration City=${Kota} Country=${Negara}"
 	fi
-else
-	Kota=Semarang #A city name. Example: London
-	Negara=ID #A country name or 2 character alpha ISO 3166 code. Examples: GB or United Kindom
 fi
-
-echo "${Kota} ${Negara}"
 
 #API FROM https://aladhan.com/prayer-times-api#GetTimingsByCity
 if [ "$(curl -s "http://api.aladhan.com/v1/timingsByCity?city=${Kota}&country=${Negara}&method=8" | jq --raw-output '.status')" == "OK" ]; then
