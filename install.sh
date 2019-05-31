@@ -24,8 +24,8 @@ chmod +x "${installpath}/dynamic-wallpaper/realtimeapi.sh"
 echo "copying $(pwd)/LICENSE"
 cp "$(pwd)/LICENSE" "${installpath}/dynamic-wallpaper"
 
-echo "copying $(pwd)/mojave"
-cp -r "$(pwd)/mojave" "${installpath}/dynamic-wallpaper"
+echo "copying $(pwd)/robotic"
+cp -r "$(pwd)/robotic" "${installpath}/dynamic-wallpaper"
 
 echo "copying $(pwd)/tealinux-dynamic-wallpaper.png"
 cp "$(pwd)/ico/tealinux-dynamic-wallpaper.png" "/usr/share/pixmaps/"
