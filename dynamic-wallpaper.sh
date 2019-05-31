@@ -1,7 +1,7 @@
 #!/bin/bash
 #some variables
 time=0
-wppath=/usr/share/tealinux/dynamic-wallpaper/mojave #you might want to change this
+wppath=/usr/share/tealinux/dynamic-wallpaper/robotic #you might want to change this
 apipath=/usr/share/tealinux/dynamic-wallpaper
 apiconfig=~/.config/apitime-dynamic-wallpaper.cfg
 config=~/.config/tea-dynamic-wallpaper.cfg
